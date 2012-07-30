@@ -1,0 +1,12 @@
+#!/bin/bash
+
+for CASE in `~/todo/todo.sh ls | grep INC | awk '{print $3}' | sort | uniq`
+do
+	COUNT=`~/todo/todo.sh ls | grep $CASE | wc -l`
+	#echo $CASE $COUNT
+
+	if [[ $COUNT > 1 ]]; then
+		~/todo/todo.sh ls $CASE | head -n -2
+		echo ===
+	fi
+done
